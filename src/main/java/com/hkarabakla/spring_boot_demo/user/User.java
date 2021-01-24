@@ -28,6 +28,7 @@ public class User {
     @OneToOne(mappedBy = "user")
     private Address address;
 
+
     public UserDto toUserDto() {
         return UserDto.builder()
                 .id(this.id)

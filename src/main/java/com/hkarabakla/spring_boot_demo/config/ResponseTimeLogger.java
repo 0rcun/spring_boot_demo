@@ -25,13 +25,13 @@ public class ResponseTimeLogger implements HandlerInterceptor {
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
         System.out.println(Thread.currentThread().getName() + " : Request processed for : " + request.getRequestURI()
-                + " at " + Duration.between(instant.get(), Instant.now()).getSeconds() + " seconds");
+                + " at " + Duration.between(instant.get(), Instant.now()).getNano() + " nanoseconds");
     }
 
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
         System.out.println(Thread.currentThread().getName() + " : Response/View rendered for : " + request.getRequestURI()
-                + " at " + Duration.between(instant.get(), Instant.now()).getSeconds() + " seconds");
+                + " at " + Duration.between(instant.get(), Instant.now()).getNano() + " nanoseconds");
         instant.remove();
     }
 }
